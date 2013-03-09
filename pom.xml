@@ -28,18 +28,6 @@
 					<version>3.1.1</version>
 					<extensions>true</extensions>
 				</plugin>
-				<plugin>
-				    <groupId>org.testobject.extras</groupId>
-				    <artifactId>testobject-maven-plugin</artifactId>
-				    <version>0.7.4-SNAPSHOT</version>
-				    <configuration>
-					<endpoint>beta2.testobject.com</endpoint>
-					<serverId>beta2</serverId>
-				        <userId>beta2</userId>
-					<projectId>Calculator</projectId>
-				        <batchId>15</batchId>
-				    </configuration>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -51,6 +39,27 @@
 						<!-- platform or api level (api level 4 = platform 1.6) -->
 						<platform>8</platform>
 					</sdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.testobject.extras</groupId>
+				<artifactId>testobject-maven-plugin</artifactId>
+				<version>0.7.4-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>testobject</id>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>testobject</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<endpoint>beta2.testobject.com</endpoint>
+					<serverId>beta2</serverId>
+					<userId>beta2</userId>
+					<projectId>Calculator</projectId>
+					<batchId>15</batchId>
 				</configuration>
 			</plugin>
 		</plugins>
