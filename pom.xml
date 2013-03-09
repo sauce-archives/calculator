@@ -9,10 +9,6 @@
 	<packaging>apk</packaging>
 	<name>Maven Example</name>
 
-	<properties>
-		<android.sdk.path>/home/aluedeke/Development/tools/android-sdk-linux</android.sdk.path>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.google.android</groupId>
