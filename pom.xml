@@ -54,7 +54,7 @@
 			<plugin>
 				<groupId>org.testobject.extras</groupId>
 				<artifactId>testobject-maven-plugin</artifactId>
-				<version>0.7.4-SNAPSHOT</version>
+				<version>0.0.1</version>
 				<executions>
 					<execution>
 						<id>testobject</id>
