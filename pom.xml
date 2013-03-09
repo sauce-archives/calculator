@@ -69,7 +69,7 @@
 					<serverId>beta2</serverId>
 					<userId>beta2</userId>
 					<projectId>Calculator</projectId>
-					<batchId>15</batchId>
+					<batchId>2</batchId>
 				</configuration>
 			</plugin>
 		</plugins>
