@@ -68,7 +68,7 @@
 					<serverId>beta.testobject.com</serverId>
 					<userId>mtcdemo</userId>
 					<projectId>Calculator</projectId>
-					<batchId>1</batchId>
+					<batchId>2</batchId>
 				</configuration>
 			</plugin>
 		</plugins>
