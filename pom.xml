@@ -38,6 +38,26 @@
 						<target>1.6</target>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.testobject.extras</groupId>
+					<artifactId>testobject-maven-plugin</artifactId>
+					<version>0.0.1</version>
+					<executions>
+						<execution>
+							<id>testobject</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>testobject</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<serverId>beta.testobject.com</serverId>
+						<userId>mtcdemo</userId>
+						<projectId>Calculator</projectId>
+						<batchId>3</batchId>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -53,5 +73,12 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<pluginRepositories>
+		<pluginRepository>
+			<id>testobject-public-repo</id>
+			<url>http://nexus.testobject.org/nexus/content/repositories/testobject-public-repo</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 </project> 
