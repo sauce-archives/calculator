@@ -55,21 +55,11 @@
 				<groupId>org.testobject.extras</groupId>
 				<artifactId>testobject-maven-plugin</artifactId>
 				<version>0.0.1</version>
-				<executions>
-					<execution>
-						<id>testobject</id>
-						<phase>integration-test</phase>
-						<goals>
-							<goal>testobject</goal>
-						</goals>
-					</execution>
-				</executions>
 				<configuration>
-					<endpoint>beta2.testobject.com</endpoint>
 					<serverId>beta2</serverId>
 					<userId>beta2</userId>
 					<projectId>Calculator</projectId>
-					<batchId>2</batchId>
+					<batchId>1</batchId>
 				</configuration>
 			</plugin>
 		</plugins>
