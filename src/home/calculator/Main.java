@@ -269,11 +269,11 @@ public class Main extends Activity
         }
         
         
-        press='+';
+        press='*';
         
         if(sum != "")
         {
-            result=result*Float.parseFloat(editText.getText().toString());
+            result=result+Float.parseFloat(editText.getText().toString());
             
             editText.setText(result.toString());
             
