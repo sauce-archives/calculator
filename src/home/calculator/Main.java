@@ -273,7 +273,7 @@ public class Main extends Activity
         
         if(sum != "")
         {
-            result=result+Float.parseFloat(editText.getText().toString());
+            result=result*Float.parseFloat(editText.getText().toString());
             
             editText.setText(result.toString());
             
@@ -381,7 +381,7 @@ public class Main extends Activity
         
         if(sum !="")
         {
-            result_mul=result_mul + floatEditTextMsg; 
+            result_mul=result_mul * floatEditTextMsg; 
             
             result=result_mul;
             
