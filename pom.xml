@@ -57,7 +57,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<serverId>beta.testobject.com</serverId>
+					<serverId>testobject</serverId>
 					<userId>droidcon</userId>
 					<projectId>Calculator</projectId>
 					<batchId>1</batchId>
