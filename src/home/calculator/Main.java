@@ -269,7 +269,7 @@ public class Main extends Activity
         }
         
         
-        press='*';
+        press='+';
         
         if(sum != "")
         {
