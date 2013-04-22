@@ -22,3 +22,5 @@ local.properties
 
 # Maven
 target/
+/.gradle
+/build
