@@ -60,7 +60,7 @@
                                         <serverId>testobject</serverId>
                                         <userId>jax</userId>
                                         <projectId>Calculator</projectId>
-                                        <batchId>0</batchId>
+                                        <batchId>1</batchId>
                                 </configuration>
                         </plugin>
 		</plugins>
