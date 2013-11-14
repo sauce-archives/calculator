@@ -6,7 +6,7 @@ buildscript {
 
 	dependencies {
 		classpath 'com.android.tools.build:gradle:0.4+'
-		classpath group: 'org.testobject.extras', name: 'gradle', version: '1.0'
+		classpath group: 'org.testobject.extras', name: 'gradle', version: '2+'
 	}
 }
 
