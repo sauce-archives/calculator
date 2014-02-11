@@ -33,8 +33,8 @@ android {
 }
 
 testobject {
-	username $System.env.testobject.username
-	password $System.env.testobject.password
-	projectName $System.env.testobject.projectname
-	activateVersion $System.env.testobject.activateVersion
+	username "$System.env.testobject.username"
+	password "$System.env.testobject.password"
+	projectName "$System.env.testobject.projectname"
+	activateVersion "$System.env.testobject.activateVersion"
 }
