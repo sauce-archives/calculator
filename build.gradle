@@ -38,5 +38,5 @@ testobject {
 	projectName "$System.env.testobjectprojectname"
     uploadVersion true
     activateVersion true
-    batches "$System.env.testobjectbatches"
+    batches 49,48
 }
