@@ -36,5 +36,4 @@ testobject {
 	username 'myUsername'
 	password 'myPassword'
 	projectName 'myProject'
-	activateVersion true //optional
 }
