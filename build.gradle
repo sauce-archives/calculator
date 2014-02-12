@@ -1,13 +1,13 @@
 buildscript {
-	repositories {
-		mavenCentral()
-		maven { url 'http://nexus.testobject.org/nexus/content/repositories/testobject-public-repo' }
-	}
-
-	dependencies {
-		classpath 'com.android.tools.build:gradle:0.4+'
-		classpath group: 'org.testobject.extras', name: 'gradle', version: '2+'
-	}
+        repositories {
+                mavenCentral()
+                maven { url 'http://nexus.testobject.org/nexus/content/repositories/testobject-public-beta-repo' }
+        }
+ 
+        dependencies {
+                classpath 'com.android.tools.build:gradle:0.4+'
+                classpath group: 'org.testobject.extras', name: 'gradle', version: '3+'
+        }
 }
 
 apply plugin: 'android'
@@ -36,4 +36,7 @@ testobject {
 	username "$System.env.testobjectusername"
 	password "$System.env.testobjectpassword"
 	projectName "$System.env.testobjectprojectname"
+    uploadVersion "$System.env.testobjectuploadversion"
+    activateVersion "$System.env.testobjectactivateversion"
+    batches "$System.env.testobjectbatches"
 }
