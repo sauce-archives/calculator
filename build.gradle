@@ -38,5 +38,15 @@ testobject {
 	projectName "$System.env.testobjectprojectname"
     uploadVersion "$System.env.testobjectuploadversion".toBoolean()
     activateVersion "$System.env.testobjectactivateversion".toBoolean()
-    batches Eval.me( "$System.env.testobjectbatches")
+	
+	def simplisticParse( String input, Class requiredType ) {
+	  input.dropWhile { it != '[' }
+	       .drop( 1 )
+	       .takeWhile { it != ']' }
+	       .split( ',' )*.asType( requiredType )
+	}
+
+	int[] i = simplisticParse( "$System.env.testobjectbatches", Integer )
+	
+    batches i
 }
