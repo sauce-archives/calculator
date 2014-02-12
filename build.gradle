@@ -36,7 +36,7 @@ android {
 	  input.dropWhile { it != '[' }
 	       .drop( 1 )
 	       .takeWhile { it != ']' }
-	       .split( ',' )*.asType( requiredType )
+	       
 	}
 
 
@@ -46,9 +46,5 @@ testobject {
 	projectName "$System.env.testobjectprojectname"
     uploadVersion "$System.env.testobjectuploadversion".toBoolean()
     activateVersion "$System.env.testobjectactivateversion".toBoolean()
-	
-
-	int[] i = simplisticParse( "$System.env.testobjectbatches", Integer )
-	
-    batches i
+    batches "$System.env.testobjectbatches".split( ',' )*.asType( Integer )
 }
