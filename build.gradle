@@ -33,7 +33,7 @@ android {
 }
 
 testobject {
-	username 'myUsername'
-	password 'myPassword'
-	projectName 'myProject'
+	username "$System.env.testobjectusername"
+	password "$System.env.testobjectpassword"
+	projectName "$System.env.testobjectprojectname"
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="TestObjectCalculatorJenkinsBuild" default="downloadBatchReport" basedir=".">
+
+    <!-- load the testobject ant tasks -->
+    <taskdef resource="org/testobject/extras/ant/tasks.properties">
+            <classpath>
+                <pathelement location="${testobject.ant.lib.name}"/>
+            </classpath> 
+    </taskdef> 
+ 
+    <!-- login into testobject, must be always executed before other tasks are called -->
+    <target name="login">
+        <login username="${testobject.user}" password="${testobject.pw}" />
+    </target>
+ 
+    <!-- upload a new apk file, versionId is stored in 'new.version' property -->
+    <target name="uploadVersion" depends="login">
+        <uploadVersion name="${apk.version.name}" file="${apk.path}" response="new.version" />
+    </target>
+	
+    <!-- set the new version as default -->
+    <target name="activateVersion" depends="uploadVersion">
+        <activateVersion versionId="${new.version}" />
+    </target>
+ 
+    <!-- start the batch with id 1 and store the batch report id in 'new.batch' -->
+    <target name="startBatch" depends="activateVersion">
+        <startBatch batchId="${testobject.batch.id}" response="new.batch"/>
+        <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.project}/reports/${new.batch}"></echo>
+    </target>
+     
+    <!-- download the report of the created batch and store the result -->
+    <target name="downloadBatchReport" depends="startBatch">
+        <getBatchReport batchReportId="${new.batch}" status="batch.status" errors="batch.errors" tests="batch.tests"/>
+        <condition property="batch.succeeded">
+                <equals arg1="${batch.status}" arg2="SUCCESS" />
+        </condition>
+        <antcall target="fail" />
+    </target> 
+ 
+    <target name="fail" unless="batch.succeeded">
+        <fail message="Batch Replay failed with ${batch.errors} errors" />
+		<echo message="https://app.testobject.com/#/${testobject.user}/${testobject.project}/reports/${new.batch}"></echo>
+    </target>
+</project>
