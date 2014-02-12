@@ -36,7 +36,7 @@ testobject {
 	username "$System.env.testobjectusername"
 	password "$System.env.testobjectpassword"
 	projectName "$System.env.testobjectprojectname"
-    uploadVersion "$System.env.testobjectuploadversion"
-    activateVersion "$System.env.testobjectactivateversion"
+    uploadVersion "$System.env.testobjectuploadversion".toBoolean()
+    activateVersion "$System.env.testobjectactivateversion".toBoolean()
     batches "$System.env.testobjectbatches"
 }
