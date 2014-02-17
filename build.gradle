@@ -88,4 +88,4 @@ def createJunitReport = {
 task reportMe << {
      createJunitReport()
 }
-
+testobjectUpload.finalizedBy reportMe
