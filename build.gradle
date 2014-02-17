@@ -46,5 +46,5 @@ testobject {
 	projectName "$System.env.testobjectprojectname"
     uploadVersion "$System.env.testobjectuploadversion".toBoolean()
     activateVersion "$System.env.testobjectactivateversion".toBoolean()
-    batches Eval.me("$System.env.testobjectbatches")
+    batches Eval.me("$System.env.testobjectbatches").toArray(new int[0])
 }
