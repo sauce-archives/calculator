@@ -48,3 +48,48 @@ testobject {
     activateVersion "$System.env.testobjectactivateversion".toBoolean()
     batches Eval.me("$System.env.testobjectbatches").toArray(new int[0])
 }
+
+
+def createJunitReport = {
+    def list = testobject.batchReports
+    if( !list ) {
+        logger.warn "No Reports"
+        return
+    }
+    new File("TEST-report.xml").withWriter(){ wr->
+        def xml = new groovy.xml.MarkupBuilder(wr)
+        int errors = 0
+        list.each{
+            println ">$it.id, $it.batchId, $it.name , $it.status "
+            it.reports.each{ r->
+                println "Report: $r.key.testId, $r.key.deviceId, View:
+$r.view.reportId, $r.view.status"
+                if( r.view.status.name() == "FAILURE" ) errors++
+            }
+            it.tests.each{ t-> println "Tests: $t.testId, $t.name"}
+            it.devices.each{ d-> println "Devices: $d.deviceId, $d.name"}
+        }
+
+        xml.testsuite( name: "org.testobject", time:
+list.sum{it.duration}, tests: list.sum{it.reports.size()}, errors:
+errors, skipped:0 ,failures:0 ){
+            list.each{ br->
+                testsuite( name: br.name, time: br.duration ){
+                    br.reports.each{ report->
+                        testcase(name: report.key.deviceId ){
+                            if( report.view.status.name() == "FAILURE" ){
+                                error(message:"Failure in Report
+$report.key.deviceId")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+task reportMe << {
+     createJunitReport()
+}
+
