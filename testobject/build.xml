@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="TestObjectCalculatorJenkinsBuild" default="runCheckup" basedir=".">
+<project name="TestObjectCalculatorJenkinsBuild" default="downloadSuiteReport" basedir=".">
 
     <!-- load the testobject ant tasks -->
     <taskdef resource="org/testobject/extras/ant/tasks.properties">
