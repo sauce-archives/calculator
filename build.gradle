@@ -37,9 +37,9 @@ android {
 testobject {
 	username "$System.env.testobjectusername"
 	password "$System.env.testobjectpassword"
-	appName "$System.env.testobjectprojectname"
+	appName "$System.env.testobjectappname"
     uploadVersion "$System.env.testobjectuploadversion".toBoolean()
 	activateVersion "$System.env.testobjectactivateversion".toBoolean()
-	testSuites Eval.me("$System.env.testobjectbatches").toArray(new int[0])
-	runCheckup true
+	testSuites Eval.me("$System.env.testobjectsuites").toArray(new int[0])
+	runCheckup "$System.env.testobjectruncheckup".toBoolean()
 }
