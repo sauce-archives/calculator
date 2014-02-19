@@ -1,7 +1,7 @@
 buildscript {
         repositories {
                 mavenCentral()
-                maven { url 'http://nexus.testobject.org/nexus/content/repositories/testobject-public-beta-repo' }
+                maven { url 'http://nexus.testobject.org/nexus/content/repositories/testobject-public-alpha-repo' }
         }
  
         dependencies {
@@ -37,8 +37,9 @@ android {
 testobject {
 	username "$System.env.testobjectusername"
 	password "$System.env.testobjectpassword"
-	projectName "$System.env.testobjectprojectname"
-    	uploadVersion "$System.env.testobjectuploadversion".toBoolean()
+	appName "$System.env.testobjectprojectname"
+    uploadVersion "$System.env.testobjectuploadversion".toBoolean()
 	activateVersion "$System.env.testobjectactivateversion".toBoolean()
-	batches Eval.me("$System.env.testobjectbatches").toArray(new int[0])
+	testSuites Eval.me("$System.env.testobjectbatches").toArray(new int[0])
+	runCheckup true
 }
