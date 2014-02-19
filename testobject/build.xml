@@ -22,24 +22,29 @@
     <target name="activateVersion" depends="uploadVersion">
         <activateVersion versionId="${new.version}" />
     </target>
+
+        <!-- set the new version as default -->
+    <target name="runCheckup" depends="activateVersion">
+        <runCheckup />
+    </target>
  
-    <!-- start the batch with id 1 and store the batch report id in 'new.batch' -->
-    <target name="startBatch" depends="activateVersion">
-        <startBatch batchId="${testobject.batch.id}" response="new.batch"/>
-        <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.project}/reports/${new.batch}"></echo>
+    <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
+    <target name="startTestSuite" depends="activateVersion">
+        <startTestSuite testSuiteId="${testobject.testSuite.id}" response="new.testSuite"/>
+        <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
     </target>
      
-    <!-- download the report of the created batch and store the result -->
-    <target name="downloadBatchReport" depends="startBatch">
-        <getBatchReport batchReportId="${new.batch}" status="batch.status" errors="batch.errors" tests="batch.tests"/>
-        <condition property="batch.succeeded">
-                <equals arg1="${batch.status}" arg2="SUCCESS" />
+    <!-- download the report of the created test suite and store the result -->
+    <target name="downloadSuiteReport" depends="startTestSuite">
+        <getSuiteReport suiteReportId="${new.testSuite}" status="testSuite.status" errors="testSuite.errors" tests="testSuite.tests"/>
+        <condition property="testSuite.succeeded">
+                <equals arg1="${testSuite.status}" arg2="SUCCESS" />
         </condition>
         <antcall target="fail" />
     </target> 
  
-    <target name="fail" unless="batch.succeeded">
-        <fail message="Batch Replay failed with ${batch.errors} errors" />
-		<echo message="https://app.testobject.com/#/${testobject.user}/${testobject.project}/reports/${new.batch}"></echo>
+    <target name="fail" unless="testSuite.succeeded">
+        <fail message="Test Suite Replay failed with ${testSuite.errors} errors" />
+		<echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
     </target>
 </project>
