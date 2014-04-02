@@ -23,6 +23,10 @@
         <activateVersion versionId="${new.version}" />
     </target>
 
+    <target name="updateRobotium" depends="login">
+        <updateRobotium robotiumSuiteId="${testobject.robotiumSuite.id}" file="${robotiumApk.path}" />
+    </target>
+
         <!-- set the new version as default -->
     <target name="runCheckup" depends="activateVersion">
         <runCheckup />
