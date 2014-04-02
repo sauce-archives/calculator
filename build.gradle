@@ -6,7 +6,7 @@ buildscript {
  
         dependencies {
                 classpath 'com.android.tools.build:gradle:0.4+'
-                classpath group: 'org.testobject.extras', name: 'gradle', version: '3+'
+                classpath group: 'org.testobject.extras', name: 'gradle', version: '4+'
         }
 }
 
@@ -42,4 +42,5 @@ testobject {
 	activateVersion "$System.env.testobjectactivateversion".toBoolean()
 	testSuites Eval.me("$System.env.testobjectsuites").toArray(new int[0])
 	runCheckup "$System.env.testobjectruncheckup".toBoolean()
+	robotiumSuiteId "$System.env.testobjectrobotiumsuiteid"
 }
