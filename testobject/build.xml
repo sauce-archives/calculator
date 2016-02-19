@@ -18,10 +18,11 @@
         <uploadVersion name="${apk.version.name}" file="${apk.path}" response="new.version" />
     </target>
 	
-    <!-- set the new version as default -->
+    <!--
     <target name="activateVersion" depends="uploadVersion">
         <activateVersion versionId="${new.version}" />
     </target>
+set the new version as default -->
 
         <!-- set the new version as default -->
     <target name="runCheckup" depends="activateVersion">
