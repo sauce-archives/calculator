@@ -18,19 +18,18 @@
         <uploadVersion name="${apk.version.name}" file="${apk.path}" response="new.version" />
     </target>
 	
-    <!--
+    <!-- set the new version as default -->
     <target name="activateVersion" depends="uploadVersion">
         <activateVersion versionId="${new.version}" />
     </target>
-set the new version as default -->
 
         <!-- set the new version as default -->
-    <target name="runCheckup">
+    <target name="runCheckup" depends="activateVersion">
         <runCheckup />
     </target>
  
     <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
-    <target name="startTestSuite">
+    <target name="startTestSuite" depends="activateVersion">
         <startTestSuite testSuiteId="${testobject.testSuite.id}" response="new.testSuite"/>
         <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
     </target>
