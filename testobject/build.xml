@@ -30,7 +30,7 @@ set the new version as default -->
     </target>
  
     <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
-    <target name="startTestSuite" depends="activateVersion">
+    <target name="startTestSuite">
         <startTestSuite testSuiteId="${testobject.testSuite.id}" response="new.testSuite"/>
         <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
     </target>
