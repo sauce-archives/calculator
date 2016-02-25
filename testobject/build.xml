@@ -23,7 +23,7 @@
         <activateVersion versionId="${new.version}" />
     </target>
 
-        <!-- set the new version as default -->
+    <!-- set the new version as default -->
     <target name="runCheckup" depends="activateVersion">
         <runCheckup />
     </target>
