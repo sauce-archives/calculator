@@ -2,7 +2,7 @@
 <project name="TestObjectCalculatorJenkinsBuild" default="downloadSuiteReport" basedir=".">
 
     <!-- load the testobject ant tasks -->
-    <taskdef resource="org/testobject/extras/ant/tasks.properties">
+    <taskdef resource="org/testobject/ant/tasks.properties">
             <classpath>
                 <pathelement location="${testobject.ant.lib.name}"/>
             </classpath> 
