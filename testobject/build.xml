@@ -15,7 +15,7 @@
  
     <!-- upload a new apk file, versionId is stored in 'new.version' property -->
     <target name="uploadVersion" depends="login">
-        <uploadVersion name="${apk.version.name}" file="${apk.path}" response="new.version" />
+        <uploadVersion name="${apk.version.name}" file="${apk.path}" />
     </target>
 	
     <!-- set the new version as default -->
