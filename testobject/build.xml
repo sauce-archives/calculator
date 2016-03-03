@@ -20,7 +20,7 @@
 	
     <!-- set the new version as default -->
     <target name="activateVersion" depends="uploadVersion">
-        <activateVersion versionId="${new.version}" />
+        <activateVersion />
     </target>
 
     <!-- set the new version as default -->
