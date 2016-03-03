@@ -36,7 +36,7 @@
      
     <!-- download the report of the created test suite and store the result -->
     <target name="downloadSuiteReport" depends="startTestSuite">
-        <getSuiteReport suiteReportId="${new.testSuite}" status="testSuite.status" errors="testSuite.errors" tests="testSuite.tests"/>
+        <getSuiteReport suiteReportId="${testobject.suite.report.id}" status="testSuite.status" errors="testSuite.errors" tests="testSuite.tests"/>
         <condition property="testSuite.succeeded">
                 <equals arg1="${testSuite.status}" arg2="SUCCESS" />
         </condition>
