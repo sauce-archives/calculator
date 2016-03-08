@@ -17,11 +17,6 @@
                 <pathelement location="ant/ant-plugin.jar"/>
             </classpath>
     </taskdef>
-<!---->
-    <!--<taskdef name="login" classname="org.testobject.ant.LoginTask" classpath="ant/ant-plugin.jar" />-->
-    <!--<taskdef name="uploadVersion" classname="org.testobject.ant.UploadVersionTask" classpath="ant/ant-plugin.jar" />-->
-    <!--<taskdef name="startTestSuite" classname="org.testobject.ant.StartTestSuiteTask" classpath="ant/ant-plugin.jar" />-->
-    <!--<taskdef name="downloadSuiteReport" classname="org.testobject.ant.GetSuiteReportTask" classpath="ant/ant-plugin.jar" />-->
 
     <!-- login into testobject, must be always executed before other tasks are called -->
     <target name="login">
