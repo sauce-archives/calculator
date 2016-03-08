@@ -11,7 +11,7 @@
     <property name="testobject.apk.test" value="test.apk" />
     <property name="apk.version.name" value="19" />
 
-     load the testobject ant tasks
+    <!-- load the testobject ant tasks -->
     <taskdef resource="ant/tasks.properties">
             <classpath>
                 <pathelement location="ant-plugin.jar"/>
