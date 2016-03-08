@@ -14,7 +14,7 @@
     <!-- load the testobject ant tasks -->
     <taskdef resource="org/testobject/ant/tasks.properties">
             <classpath>
-                <pathelement location="${testobject.ant.lib.name}"/>
+                <pathelement location="ant/ant-plugin.jar"/>
             </classpath>
     </taskdef>
 <!---->
