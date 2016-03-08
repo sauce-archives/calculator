@@ -31,7 +31,6 @@
     <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
     <target name="startTestSuite" depends="uploadVersion" >
         <startTestSuite testSuiteId="${testobject.testSuite.id}" response="testobject.suite.report.new"/>
-        <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${testobject.suite.report.new}"></echo>
     </target>
      
     <!-- download the report of the created test suite and store the result -->
