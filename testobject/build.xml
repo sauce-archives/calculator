@@ -1,13 +1,28 @@
 <?xml version="1.0"?>
 <project name="TestObjectCalculatorJenkinsBuild" default="downloadSuiteReport" basedir=".">
 
+    <!-- properties used by all tasks to identify the correct app -->
+    <property name="testobject.ant.lib.name" value="ant-plugin.jar" />
+    <property name="testobject.user" value="testobject" />
+    <property name="testobject.pw" value="UFsqW71e4a5sV3k9q" />
+    <property name="testobject.app" value="CalculatorTest" />
+    <property name="testobject.testSuite.id" value="8" />
+    <property name="testobject.apk.app" value="app.apk" />
+    <property name="testobject.apk.test" value="test.apk" />
+    <property name="apk.version.name" value="19" />
+
     <!-- load the testobject ant tasks -->
-    <taskdef resource="org/testobject/ant/tasks.properties">
-            <classpath>
-                <pathelement location="${testobject.ant.lib.name}"/>
-            </classpath> 
-    </taskdef> 
- 
+    <!--<taskdef resource="ant/tasks.properties">-->
+            <!--<classpath>-->
+                <!--<pathelement location="ant-plugin.jar"/>-->
+            <!--</classpath> -->
+    <!--</taskdef> -->
+
+    <taskdef name="login" classname="org.testobject.ant.LoginTask" classpath="ant/ant-plugin.jar" />
+    <taskdef name="uploadVersion" classname="org.testobject.ant.UploadVersionTask" classpath="ant/ant-plugin.jar" />
+    <taskdef name="startTestSuite" classname="org.testobject.ant.StartTestSuiteTask" classpath="ant/ant-plugin.jar" />
+    <taskdef name="downloadSuiteReport" classname="org.testobject.ant.GetSuiteReportTask" classpath="ant/ant-plugin.jar" />
+
     <!-- login into testobject, must be always executed before other tasks are called -->
     <target name="login">
         <login username="${testobject.user}" password="${testobject.pw}" />
@@ -15,7 +30,7 @@
  
     <!-- upload a new apk file, versionId is stored in 'new.version' property -->
     <target name="uploadVersion" depends="login">
-        <uploadVersion name="${apk.version.name}" file="${apk.path}" />
+        <uploadVersion name="${apk.version.name}" file="${testobject.apk.app}" />
     </target>
 	
     <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
