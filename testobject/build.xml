@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="TestObjectCalculatorJenkinsBuild" default="downloadSuiteReport" basedir=".">
+
+    <!-- load the testobject ant tasks -->
+    <taskdef resource="org/testobject/extras/ant/tasks.properties">
+            <classpath>
+                <pathelement location="${testobject.ant.lib.name}"/>
+            </classpath> 
+    </taskdef> 
+ 
+    <!-- login into testobject, must be always executed before other tasks are called -->
+    <target name="login">
+        <login username="${testobject.user}" password="${testobject.pw}" />
+    </target>
+ 
+    <!-- upload a new apk file, versionId is stored in 'new.version' property -->
+    <target name="uploadVersion" depends="login">
+        <uploadVersion name="${apk.version.name}" file="${apk.path}" response="new.version" />
+    </target>
+	
+    <!-- set the new version as default -->
+    <target name="activateVersion" depends="uploadVersion">
+        <activateVersion versionId="${new.version}" />
+    </target>
+
+        <!-- set the new version as default -->
+    <target name="runCheckup" depends="activateVersion">
+        <runCheckup />
+    </target>
+ 
+    <!-- start the test suite with id 1 and store the suite report id in 'new.testSuite' -->
+    <target name="startTestSuite" depends="activateVersion">
+        <startTestSuite testSuiteId="${testobject.testSuite.id}" response="new.testSuite"/>
+        <echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
+    </target>
+     
+    <!-- download the report of the created test suite and store the result -->
+    <target name="downloadSuiteReport" depends="startTestSuite">
+        <getSuiteReport suiteReportId="${new.testSuite}" status="testSuite.status" errors="testSuite.errors" tests="testSuite.tests"/>
+        <condition property="testSuite.succeeded">
+                <equals arg1="${testSuite.status}" arg2="SUCCESS" />
+        </condition>
+        <antcall target="fail" />
+    </target> 
+ 
+    <target name="fail" unless="testSuite.succeeded">
+        <fail message="Test Suite Replay failed with ${testSuite.errors} errors" />
+		<echo message="https://app.testobject.com/#/${testobject.user}/${testobject.app}/reports/${new.testSuite}"></echo>
+    </target>
+</project>
