@@ -1,6 +1,6 @@
-calculator
+Calculator
 ==========
 
-Sample Calculator App for Android
+A simple Calculator App for Android.
 
-source: http://sourceforge.net/projects/androidcalculat/
+Source: http://sourceforge.net/projects/androidcalculat/
