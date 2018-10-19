@@ -103,8 +103,7 @@ public class Main extends Activity
             onClickListenerReset(buttonReset);
         }
         
-        if(sum !="")
-        {
+        if(sum !=""){
             zero=(String)button0.getText();
             
             sum=sum+zero;
